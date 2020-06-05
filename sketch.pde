@@ -1,7 +1,8 @@
 //EXTERNAL RESOURCES
 //https://www.youtube.com/watch?v=cXgA1d_E-jY (flappy bird)
 //https://www.youtube.com/watch?v=Ouza_4SsbLc (side scroller)
-//https://happycoding.io/tutorials/processing/collision-detection
+//https://www.openprocessing.org/sketch/149174
+//https://happycoding.io/tutorials/processing/collision-detection??
 //Version 1.1
 import javax.swing.*;
 
@@ -9,7 +10,9 @@ import javax.swing.*;
 int state = 0;
 final int menu = 0;
 final int game = 1;
+Rules r = new Rules();
 
+final int ALPHALEVEL = 20;  //pixels below this alpha level considered transparent
 final color WHITE = color(255);
 PImage bg;
 
@@ -25,7 +28,7 @@ void setup()
 {
   size(800,600);
   bg = loadImage("paknsave.jpg");
-  //new StartMenu();
+  Shield s = new Shield();
 }
 
 void draw()
@@ -74,13 +77,21 @@ void showMenu()
          null,
          "Starting game...",
          "Ready to start",
-         JOptionPane.WARNING_MESSAGE);
-         state = state==menu?game:menu;
+         JOptionPane.PLAIN_MESSAGE);
+         //change game state to game
+         state = state == menu?game:menu;
      }
      else
      {
-         //view rules
-         //runGame();
+       //view rules
+       JOptionPane.showMessageDialog(
+         null,
+         r.getRules(),
+         "RULES",
+         JOptionPane.PLAIN_MESSAGE);
+       
+       //change game state to game
+       state = state == menu?game:menu;
      }
    }
 }
@@ -107,9 +118,9 @@ void keyReleased()
    println("keyReleased(): key=" + int(key) + ", keyCode=" + keyCode);
  }
 }
-
-//main menu tab and rules tab
+//double jump stop by using onGround
 //hit detection
-//sprite
+//sprite/animated PImage
 //shield
 //arraylist objects
+//sound

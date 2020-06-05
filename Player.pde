@@ -1,5 +1,7 @@
 class Player
 {
+  PImage playerFrames;
+  int playerFrameIdx;
   PVector position;
   PVector velocity;
   PVector acceleration;
