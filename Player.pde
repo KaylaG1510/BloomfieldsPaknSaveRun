@@ -1,6 +1,6 @@
 class Player
 {
-  PImage playerFrames;
+  PImage[] playerFrames;
   int playerFrameIdx;
   PVector position;
   PVector velocity;
@@ -10,7 +10,7 @@ class Player
   Player()
   {
     position = new PVector(100, FLOOR - 40);
-    velocity = new PVector(2, 0);
+    velocity = new PVector(1.5, 0);
   }
   
   //show player

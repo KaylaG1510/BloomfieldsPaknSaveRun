@@ -15,6 +15,7 @@ Rules r = new Rules();
 final int ALPHALEVEL = 20;  //pixels below this alpha level considered transparent
 final color WHITE = color(255);
 PImage bg;
+PImage n95;
 
 //jumping related variables
 final PVector gravity = new PVector(0, 0.2);
@@ -23,12 +24,14 @@ final float FLOOR = 500;
 
 Player p = new Player();
 Obstacle o = new Obstacle();
+Shield s;
 
 void setup()
 {
   size(800,600);
   bg = loadImage("paknsave.jpg");
-  Shield s = new Shield();
+  n95 = loadImage("n95.png");
+  s = new Shield();
 }
 
 void draw()
@@ -100,6 +103,9 @@ void runGame()
 {
   background(bg);
   translate(-p.position.x + 150, 0);
+  
+  //shield
+  image(n95, 400, FLOOR - 50);
   
   //show object
   o.render();
